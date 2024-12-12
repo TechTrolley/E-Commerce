@@ -1,5 +1,5 @@
 import Login from "./login.jsx"
-import Hello from "./Hello.jsx"
+import Navbar from './Components/Navbar';
 
 function App() {
   
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Login/>
-      <Hello/>
+      <Navbar/>
     </>
   )
 }
