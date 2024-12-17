@@ -22,7 +22,7 @@ const Navbar = () => {
 							Home
 						</a>
 						<a
-							href="#"
+							href="./Products.jsx"
 							className="text-white hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
 						>
 							Products
