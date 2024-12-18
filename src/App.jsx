@@ -1,20 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './Navbar';
-import Products from './Products';
+import Login from "./login.jsx";
+import Navbar from './Components/Navbar';
 
-const App = () => {
-	return (
-		<Router>
-			<div>
-				<Navbar />
-				<Routes>
-					<Route path="/" element={<h1 className="text-center p-10">Welcome to Tech Trolley</h1>} />
-					<Route path="/products" element={<Products />} />
-				</Routes>
-			</div>
-		</Router>
-	);
-};
+function App() {
+  
 
-export default App;
+  return (
+    <>
+      <Login/>
+      <Navbar/>
+    </>
+  )
+}
+
+export default App

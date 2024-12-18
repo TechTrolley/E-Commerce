@@ -15,26 +15,17 @@ const Navbar = () => {
 				<div className="max-w-screen-xl mx-auto flex justify-between items-center">
 					<div className="text-white text-xl font-bold">Tech Trolley</div>
 					<div className="hidden md:flex space-x-6">
-						<a
-							href="#"
-							className="text-white hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-						>
-							Home
-						</a>
-						<a
-							href="./Products.jsx"
-							className="text-white hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-						>
-							Products
-						</a>
+						<a href="Hello.jsx"className="text-white hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300">
+							Home</a>
+						<a href="#"className="text-white hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300">
+							Products</a>
 						<a
 							href="#"
 							className="text-white hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
 						>
 							About
 						</a>
-						<a
-							href="#"
+						<a href="#"
 							className="text-white hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
 						>
 							Contact Us
