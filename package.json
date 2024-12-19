@@ -10,10 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-bootstrap": "^2.10.6",
-    "react-dom": "^18.3.1"
-  },
+	"react-icons": "^4.11.0"
+},
   "devDependencies": {
     "@eslint/js": "^9.15.0",
     "@types/react": "^18.3.12",
