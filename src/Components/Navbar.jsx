@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <>
       {/* Primary Navbar */}
-      <nav className="bg-blue-500 p-4">
+      <nav className="bg-[#CC313D] p-4"> {/* Updated navbar color */}
         <div className="max-w-screen-xl mx-auto flex justify-between items-center">
           <div className="text-white text-xl font-bold">Tech Trolley</div>
           <div className="hidden md:flex space-x-6">
@@ -89,7 +89,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-blue-600 p-4 space-y-4">
+        <div className="md:hidden bg-[#248A8B] p-4 space-y-4"> {/* Updated mobile menu color */}
           <a
             href="#"
             className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
@@ -118,25 +118,61 @@ const Navbar = () => {
       )}
 
       {/* Products Section - Below Navbar */}
-      <div id="products" className="bg-blue-600 text-white py-6">
-        <div className="max-w-screen-xl mx-auto flex justify-center space-x-8">
+      <div id="products" className="bg-[#122F3D] text-white py-4"> {/* Updated product section color */}
+        <div className="max-w-screen-xl mx-auto flex flex-wrap justify-center space-x-4">
           <a
             href="#smartphones"
-            className="block hover:bg-sky-700 hover:text-gray-200 px-4 py-0 rounded transition-all duration-300"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Smartphones
           </a>
           <a
             href="#smartwatches"
-            className="block hover:bg-sky-700 hover:text-gray-200 px-4 py-0 rounded transition-all duration-300"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Smartwatches
           </a>
           <a
             href="#laptops"
-            className="block hover:bg-sky-700 hover:text-gray-200 px-4 py-0 rounded transition-all duration-300"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Laptops
+          </a>
+          <a
+            href="#controllers"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
+          >
+            Controllers
+          </a>
+          <a
+            href="#drones"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
+          >
+            Drones
+          </a>
+          <a
+            href="#mice"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
+          >
+            Mice
+          </a>
+          <a
+            href="#keyboards"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
+          >
+            Keyboards
+          </a>
+          <a
+            href="#graphics-cards"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
+          >
+            Graphics Cards
+          </a>
+          <a
+            href="#ssds"
+            className="block hover:bg-sky-700 hover:text-gray-200 px-3 py-1 text-sm rounded transition-all duration-300"
+          >
+            SSDs
           </a>
         </div>
       </div>
