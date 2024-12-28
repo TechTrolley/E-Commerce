@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import backgroundImage from './home.png'; // Adjust the path based on your project structure
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,7 +25,6 @@ const Navbar = () => {
               placeholder="Search for Products...."
               className="pl-10 pr-40 py-2.5 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
             />
-			
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-5 text-gray-400"
@@ -39,24 +38,26 @@ const Navbar = () => {
                 strokeWidth="2"
                 d="M21 21l-4.35-4.35M15 10a5 5 0 11-10 0 5 5 0 0110 0z"
               />
-			  
             </svg>
           </div>
-		  <button className=" text-white hover:text-[#000000] transition-all duration-300 p-2 rounded-full border border-white">
-			<span class="">Products</span>
-		  </button>
 
+          {/* Products Button */}
+          <button className="text-white hover:text-white hover:bg-[#122F3D] hover:scale-105 transition-all duration-300 py-3 px-6 rounded-lg shadow-md border border-white mr-7 focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 active:bg-[#FF4C4C]">
+            <span>Products</span>
+          </button>
+
+          {/* User and Cart Buttons */}
           <div className="flex items-center space-x-4">
             {/* Shopping Cart Button */}
-            <button className="flex items-center space-x-2 text-white hover:text-[#000000] transition-all duration-300 p-2 rounded-full border border-white">
+            <button className="flex items-center space-x-2 mr-2 text-white hover:text-white hover:bg-[#122F3D] hover:scale-105 transition-all duration-300 py-3 px-6 rounded-lg shadow-md border border-white focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 active:bg-[#FF4C4C]">
               <FaShoppingCart size={25} />
-              <span class="pl-1">Cart</span>
+              <span className="pl-1">Cart</span>
             </button>
 
             {/* Login Button */}
-            <button className="flex items-center justify-center text-white hover:text-[#000000] transition-all duration-300 p-2 rounded-full border border-white ">
+            <button className="flex items-center justify-center text-white hover:text-white hover:bg-[#122F3D] hover:scale-105 transition-all duration-300 py-3 px-6 rounded-lg shadow-md border border-white focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 active:bg-[#FF4C4C]">
               <FaUser size={25} />
-			  <span class="pl-2">Login</span>
+              <span className="pl-2">Login</span>
             </button>
 
             {/* Mobile Menu Toggle Button */}
@@ -85,30 +86,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#248A8B] p-4 space-y-4">
-          <a
-            href="#"
-            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-          >
-            Home
-          </a>
-          <a
-            href="#"
-            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-          >
-            Products
-          </a>
-          <a
-            href="#"
-            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-          >
-            About
-          </a>
-          <a
-            href="#"
-            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-          >
-            Contact Us
-          </a>
+          {/* Add mobile menu items here */}
         </div>
       )}
 
@@ -117,55 +95,55 @@ const Navbar = () => {
         <div className="mx-auto flex flex-wrap space-x-4">
           <a
             href="#smartphones"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Smartphones
           </a>
           <a
             href="#smartwatches"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Smartwatches
           </a>
           <a
             href="#laptops"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Laptops
           </a>
           <a
             href="#controllers"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Controllers
           </a>
           <a
             href="#drones"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Drones
           </a>
           <a
             href="#mice"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Mice
           </a>
           <a
             href="#keyboards"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Keyboards
           </a>
           <a
             href="#graphics-cards"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Graphics Cards
           </a>
           <a
             href="#ssds"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
           >
             SSDs
           </a>
@@ -189,6 +167,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-<button className="shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
-  Playlist
-</button>
