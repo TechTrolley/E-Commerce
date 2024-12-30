@@ -40,24 +40,21 @@ const Navbar = () => {
               />
             </svg>
           </div>
-
-          {/* Products Button */}
-          <button className="text-white hover:text-white hover:bg-[#122F3D] hover:scale-105 transition-all duration-300 py-3 px-6 rounded-lg shadow-md border border-white mr-7 focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 active:bg-[#FF4C4C]">
-            <span>Products</span>
+          <button className="bg-gradient-to-r from-[#248A8B] to-[#122F3D] text-white hover:from-[#CC313D] hover:to-[#122F3D] transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6">
+            <span className="uppercase tracking-wide font-semibold">Products</span>
           </button>
 
-          {/* User and Cart Buttons */}
           <div className="flex items-center space-x-4">
             {/* Shopping Cart Button */}
-            <button className="flex items-center space-x-2 mr-2 text-white hover:text-white hover:bg-[#122F3D] hover:scale-105 transition-all duration-300 py-3 px-6 rounded-lg shadow-md border border-white focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 active:bg-[#FF4C4C]">
+            <button className="bg-gradient-to-r from-[#FF5733] to-[#FFC300] flex items-center space-x-2 text-white hover:from-[#FFC300] hover:to-[#FF5733] transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-2">
               <FaShoppingCart size={25} />
-              <span className="pl-1">Cart</span>
+              <span className="pl-1 uppercase tracking-wide font-semibold">Cart</span>
             </button>
 
             {/* Login Button */}
-            <button className="flex items-center justify-center text-white hover:text-white hover:bg-[#122F3D] hover:scale-105 transition-all duration-300 py-3 px-6 rounded-lg shadow-md border border-white focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 active:bg-[#FF4C4C]">
+            <button className="bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] flex items-center justify-center text-white hover:from-[#66BB6A] hover:to-[#388E3C] transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
               <FaUser size={25} />
-              <span className="pl-2">Login</span>
+              <span className="pl-2 uppercase tracking-wide font-semibold">Login</span>
             </button>
 
             {/* Mobile Menu Toggle Button */}
@@ -86,7 +83,30 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#248A8B] p-4 space-y-4">
-          {/* Add mobile menu items here */}
+          <a
+            href="#"
+            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
+          >
+            Home
+          </a>
+          <a
+            href="#"
+            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
+          >
+            Products
+          </a>
+          <a
+            href="#"
+            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
+          >
+            About
+          </a>
+          <a
+            href="#"
+            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
+          >
+            Contact Us
+          </a>
         </div>
       )}
 
@@ -95,55 +115,55 @@ const Navbar = () => {
         <div className="mx-auto flex flex-wrap space-x-4">
           <a
             href="#smartphones"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Smartphones
           </a>
           <a
             href="#smartwatches"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Smartwatches
           </a>
           <a
             href="#laptops"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Laptops
           </a>
           <a
             href="#controllers"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Controllers
           </a>
           <a
             href="#drones"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Drones
           </a>
           <a
             href="#mice"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Mice
           </a>
           <a
             href="#keyboards"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Keyboards
           </a>
           <a
             href="#graphics-cards"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Graphics Cards
           </a>
           <a
             href="#ssds"
-            className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             SSDs
           </a>
