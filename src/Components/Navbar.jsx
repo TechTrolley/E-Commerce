@@ -40,19 +40,19 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <button className="bg-gradient-to-r from-[#248A8B] to-[#122F3D] text-white hover:from-[#CC313D] hover:to-[#122F3D] transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6">
+          <button className=" text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6">
             <span className="uppercase tracking-wide font-semibold">Products</span>
           </button>
 
           <div className="flex items-center space-x-4">
             {/* Shopping Cart Button */}
-            <button className="bg-gradient-to-r from-[#FF5733] to-[#FFC300] flex items-center space-x-2 text-white hover:from-[#FFC300] hover:to-[#FF5733] transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-2">
+            <button className=" flex items-center space-x-2 text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-2">
               <FaShoppingCart size={25} />
               <span className="pl-1 uppercase tracking-wide font-semibold">Cart</span>
             </button>
 
             {/* Login Button */}
-            <button className="bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] flex items-center justify-center text-white hover:from-[#66BB6A] hover:to-[#388E3C] transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
+            <button className=" flex items-center justify-center text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
               <FaUser size={25} />
               <span className="pl-2 uppercase tracking-wide font-semibold">Login</span>
             </button>
