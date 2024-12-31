@@ -9,6 +9,9 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+  const handleProductsClick = () => {
+    navigate('/products'); // Navigate to the products page
+  };
 
   return (
     <>
@@ -40,7 +43,10 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <button className=" text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6">
+          <button
+            onClick={handleProductsClick} // When clicked, navigate to /products
+            className="text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6"
+          >
             <span className="uppercase tracking-wide font-semibold">Products</span>
           </button>
 

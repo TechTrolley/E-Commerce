@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Products = () => {
 	const products = [
 		{
@@ -26,6 +27,36 @@ const Products = () => {
 		{
 			id: 4,
 			name: 'Product 4',
+			description: 'This is a description for product 4.',
+			price: '$14.99',
+			image: 'https://via.placeholder.com/150',
+		},
+
+		
+		{
+			id: 5,
+			name: 'Product 5',
+			description: 'This is a description for product 1.',
+			price: '$19.99',
+			image: 'https://via.placeholder.com/150',
+		},
+		{
+			id: 6,
+			name: 'Product 6',
+			description: 'This is a description for product 2.',
+			price: '$24.99',
+			image: 'https://via.placeholder.com/150',
+		},
+		{
+			id: 7,
+			name: 'Product 7',
+			description: 'This is a description for product 3.',
+			price: '$29.99',
+			image: 'https://via.placeholder.com/150',
+		},
+		{
+			id: 8,
+			name: 'Product 8',
 			description: 'This is a description for product 4.',
 			price: '$14.99',
 			image: 'https://via.placeholder.com/150',
