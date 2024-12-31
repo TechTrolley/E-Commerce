@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import backgroundImage from './home.png'; // Adjust the path based on your project structure
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import backgroundImage from './home.png'; // Use imported image
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-  const handleProductsClick = () => {
-    navigate('/products'); // Navigate to the products page
   };
 
   return (
@@ -43,26 +40,28 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <button
-            onClick={handleProductsClick} // When clicked, navigate to /products
+
+          {/* Products Button - Navigation to Products Page */}
+          <Link
+            to="/products" // Using Link to navigate within the app
             className="text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6"
           >
             <span className="uppercase tracking-wide font-semibold">Products</span>
-          </button>
+          </Link>
 
           <div className="flex items-center space-x-4">
             {/* Shopping Cart Button */}
-            <button className=" flex items-center space-x-2 text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-2">
+            <button className="flex items-center space-x-2 text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-2">
               <FaShoppingCart size={25} />
               <span className="pl-1 uppercase tracking-wide font-semibold">Cart</span>
             </button>
 
             {/* Login Button */}
-            <button className=" flex items-center justify-center text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
+            <button className="flex items-center justify-center text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
               <FaUser size={25} />
               <span className="pl-2 uppercase tracking-wide font-semibold">Login</span>
             </button>
-
+            
             {/* Mobile Menu Toggle Button */}
             <div className="md:hidden">
               <button onClick={toggleMobileMenu} className="text-white">
@@ -86,100 +85,70 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#248A8B] p-4 space-y-4">
-          <a
-            href="#"
-            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-          >
-            Home
-          </a>
-          <a
-            href="#"
-            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-          >
-            Products
-          </a>
-          <a
-            href="#"
-            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-          >
-            About
-          </a>
-          <a
-            href="#"
-            className="text-white block hover:bg-sky-700 hover:text-gray-200 px-3 py-2 rounded transition-all duration-300"
-          >
-            Contact Us
-          </a>
-        </div>
-      )}
-
       {/* Products Section - Below Navbar */}
       <div id="products" className="bg-[#122F3D] text-white py-4">
         <div className="mx-auto flex flex-wrap space-x-4">
-          <a
-            href="#smartphones"
+          <Link
+            to="#smartphones"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Smartphones
-          </a>
-          <a
-            href="#smartwatches"
+          </Link>
+          <Link
+            to="#smartwatches"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Smartwatches
-          </a>
-          <a
-            href="#laptops"
+          </Link>
+          <Link
+            to="#laptops"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Laptops
-          </a>
-          <a
-            href="#controllers"
+          </Link>
+          <Link
+            to="#controllers"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Controllers
-          </a>
-          <a
-            href="#drones"
+          </Link>
+          <Link
+            to="#drones"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Drones
-          </a>
-          <a
-            href="#mice"
+          </Link>
+          <Link
+            to="#mice"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Mice
-          </a>
-          <a
-            href="#keyboards"
+          </Link>
+          <Link
+            to="#keyboards"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Keyboards
-          </a>
-          <a
-            href="#graphics-cards"
+          </Link>
+          <Link
+            to="#graphics-cards"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             Graphics Cards
-          </a>
-          <a
-            href="#ssds"
+          </Link>
+          <Link
+            to="#ssds"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
           >
             SSDs
-          </a>
+          </Link>
         </div>
       </div>
 
       {/* Background Image */}
       <div>
         <img
-          src={backgroundImage}
+          src={backgroundImage} // Use the imported image
           alt="Background"
           style={{
             width: '100%',
