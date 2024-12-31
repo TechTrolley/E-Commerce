@@ -1,4 +1,5 @@
 import React from 'react';
+import watchImage from './wat.jpg'; // Importing the uploaded image
 
 const Products = () => {
   const products = [
@@ -6,19 +7,19 @@ const Products = () => {
       id: 1,
       name: 'SmartPhones',
       description: 'Explore the latest and greatest smartphones on the market.',
-      image: 'https://via.placeholder.com/150',
+      image: 'https://i.pinimg.com/236x/70/c4/0a/70c40acd30b1f1d2a493b7137626d788.jpg/150',
     },
     {
       id: 2,
       name: 'SmartWatches',
-      description: 'This is a description',
-      image: 'https://via.placeholder.com/150',
+      description: 'Discover the future of wearable technology with our collection of smartwatches.',
+      image: watchImage, // Using the uploaded image for SmartWatches
     },
     {
       id: 3,
       name: 'Laptops',
-      description: 'This is a description for product 3.',
-      image: 'https://via.placeholder.com/150',
+      description: '.',
+      image: 'https://i.pinimg.com/736x/d0/70/07/d070075c1d5b8d094d43a36ea431d44c.jpg/150',
     },
     {
       id: 4,
