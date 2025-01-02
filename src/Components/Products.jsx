@@ -1,5 +1,12 @@
 import React from 'react';
-import watchImage from './wat.jpg'; // Importing the uploaded image
+import watchImage from './Watch.jpg'; // Importing the uploaded image
+import phoneImage from './rog.jpg';
+import lapImage from './tuf.png';
+import Controllers from './joys.jpg';
+import Mouse from './mouse.webp';
+import Drones from './drone.webp';
+import Rtx from './rtx.jpg';
+import speak from './speak.webp';
 
 const Products = () => {
   const products = [
@@ -7,7 +14,7 @@ const Products = () => {
       id: 1,
       name: 'SmartPhones',
       description: 'Explore the latest and greatest smartphones on the market.',
-      image: 'https://i.pinimg.com/236x/70/c4/0a/70c40acd30b1f1d2a493b7137626d788.jpg/150',
+      image: phoneImage,
     },
     {
       id: 2,
@@ -18,38 +25,38 @@ const Products = () => {
     {
       id: 3,
       name: 'Laptops',
-      description: '.',
-      image: 'https://i.pinimg.com/736x/d0/70/07/d070075c1d5b8d094d43a36ea431d44c.jpg/150',
+      description: 'Grab the Best Deals on Laptops with Power, Performance, and Portability at Unbeatable Prices!',
+      image: lapImage,
     },
     {
       id: 4,
       name: 'Controllers',
-      description: 'This is a description for product 4.',
-      image: 'https://via.placeholder.com/150',
+      description: 'Shop the Best Deals on Gaming Controllers – Precision, Comfort, and Style at Your Fingertips!',
+      image: Controllers,
     },
     {
       id: 5,
       name: 'Drones',
-      description: 'This is a description for product 5.',
-      image: 'https://via.placeholder.com/150',
+      description: ' Explore Amazing Drone Deals – Capture Stunning Views and Elevate Your Adventures.',
+      image: Drones,
     },
     {
       id: 6,
       name: 'Mouse',
-      description: 'This is a description for product 6.',
-      image: 'https://via.placeholder.com/150',
+      description: 'Unbeatable Deals on Mice – Precision, Style, and Performance at Your Fingertips!',
+      image: Mouse,
     },
     {
       id: 7,
       name: 'Graphics Card',
-      description: 'This is a description for product 7.',
-      image: 'https://via.placeholder.com/150',
+      description: 'Unleash Ultimate Performance with Our GPU Deals – Upgrade Today and Dominate Tomorrow!',
+      image: Rtx,
     },
     {
       id: 8,
-      name: 'SSD',
-      description: 'This is a description for product 8.',
-      image: 'https://via.placeholder.com/150',
+      name: 'Speakers',
+      description: 'Grab the Best Deals on Speakers – Crystal-Clear Sound for Every Moment.',
+      image: speak,
     },
   ];
 
