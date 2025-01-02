@@ -9,7 +9,7 @@ function App() {
       <Navbar /> {/* Navbar Component */}
       <Routes>
         {/* Define Routes for the app */}
-        <Route path="/" element={<div>Home Page</div>} /> {/* Home page or Login page */}
+        <Route path="/" element={<div></div>} /> {/* Home page or Login page */}
         <Route path="/products" element={<Products />} /> {/* Products page route */}
       </Routes>
     </Router>

@@ -10,6 +10,11 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Scroll Down Function
+  const scrollToBottom = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
+
   return (
     <>
       {/* Primary Navbar */}
@@ -43,6 +48,7 @@ const Navbar = () => {
 
           {/* Products Button - Navigation to Products Page */}
           <Link
+          onClick={scrollToBottom}
             to="/products" // Using Link to navigate within the app
             className="text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6"
           >
@@ -157,6 +163,8 @@ const Navbar = () => {
           }}
         />
       </div>
+
+      
     </>
   );
 };
