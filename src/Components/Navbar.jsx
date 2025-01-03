@@ -11,8 +11,14 @@ const Navbar = () => {
   };
 
   // Scroll Down Function
-  const scrollToBottom = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start', // Start the scroll at the beginning of the element
+      });
+    }
   };
 
   return (
@@ -48,7 +54,7 @@ const Navbar = () => {
 
           {/* Products Button - Navigation to Products Page */}
           <Link
-          onClick={scrollToBottom}
+            onClick={() => scrollToSection('smartphones')}
             to="/products" // Using Link to navigate within the app
             className="text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6"
           >
@@ -159,12 +165,14 @@ const Navbar = () => {
           style={{
             width: '100%',
             height: 'auto', // Maintain aspect ratio
-            objectFit: 'cover', // Ensures image fills container properly
+            objectFit: 'cover',
+            // marginBottom: '10%',// Ensures image fills container properly
           }}
         />
       </div>
-
-      
+      {/* Section to scroll to */}
+      <div id="smartphones" style={{ background: 'white' }}>
+      </div>
     </>
   );
 };
