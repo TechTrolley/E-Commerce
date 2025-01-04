@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import backgroundImage from './home.png'; // Use imported image
+import backgroundImage from './home.png';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -10,13 +10,16 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // Scroll Down Function
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
+      const offset = 80; // Adjust this value to match the height of your navbar
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
         behavior: 'smooth',
-        block: 'start', // Start the scroll at the beginning of the element
       });
     }
   };
@@ -24,56 +27,76 @@ const Navbar = () => {
   return (
     <>
       {/* Primary Navbar */}
-      <nav className="bg-[#CC313D] p-4">
-        <div className="mx-auto flex justify-between items-center px-8">
+      <nav
+        className="bg-[#CC313D] p-4 border-b-2 border-gray-200"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          zIndex: 1000,
+        }}
+      >
+        <div className="mx-auto flex flex-wrap justify-between items-center px-4 md:px-8">
           {/* Tech Trolley Logo */}
-          <div className="text-white text-xl font-bold">Tech Trolley</div>
-
-          {/* Centered Search Box */}
-          <div className="relative flex-grow max-w-[700px] mx-auto">
-            <input
-              type="text"
-              placeholder="Search for Products...."
-              className="pl-10 pr-40 py-2.5 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-5 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-4.35-4.35M15 10a5 5 0 11-10 0 5 5 0 0110 0z"
-              />
-            </svg>
+          <div className="text-white text-xl font-bold flex-shrink-0">
+            Tech Trolley
           </div>
 
-          {/* Products Button - Navigation to Products Page */}
-          <Link
-            onClick={() => scrollToSection('smartphones')}
-            to="/products" // Using Link to navigate within the app
-            className="text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-6"
-          >
-            <span className="uppercase tracking-wide font-semibold">Products</span>
-          </Link>
+          {/* Centered Search Bar (Amazon-like) */}
+          <div className="relative flex-grow max-w-[900px] mx-auto">
+            <input
+              type="text"
+              placeholder="Search for products, brands, and more"
+              className="pl-10 pr-4 py-2.5 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+            />
+            <button
+              className="absolute right-0 top-0 bottom-0 px-4 py-2.5 bg-[#FF9900] rounded-full text-white flex items-center justify-center hover:bg-[#FFB84D]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-4.35-4.35M15 10a5 5 0 11-10 0 5 5 0 0110 0z"
+                />
+              </svg>
+            </button>
+          </div>
 
+          {/* Right Buttons */}
           <div className="flex items-center space-x-4">
+            {/* Products Button */}
+            <Link
+              onClick={() => scrollToSection('smartphones')}
+              to="/products"
+              className="text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg hidden md:block"
+            >
+              <span className="uppercase tracking-wide font-semibold">Products</span>
+            </Link>
+
             {/* Shopping Cart Button */}
-            <button className="flex items-center space-x-2 text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg mr-2">
+            <button className="flex items-center space-x-2 text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
               <FaShoppingCart size={25} />
-              <span className="pl-1 uppercase tracking-wide font-semibold">Cart</span>
+              <span className="hidden sm:block pl-1 uppercase tracking-wide font-semibold">
+                Cart
+              </span>
             </button>
 
             {/* Login Button */}
             <button className="flex items-center justify-center text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
               <FaUser size={25} />
-              <span className="pl-2 uppercase tracking-wide font-semibold">Login</span>
+              <span className="hidden sm:block pl-2 uppercase tracking-wide font-semibold">
+                Login
+              </span>
             </button>
-            
+
             {/* Mobile Menu Toggle Button */}
             <div className="md:hidden">
               <button onClick={toggleMobileMenu} className="text-white">
@@ -95,84 +118,67 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden flex flex-col space-y-2 mt-2 bg-[#CC313D] p-2 rounded">
+            <Link
+              to="/products"
+              className="text-white text-center hover:bg-black transition-all duration-300 p-2 rounded"
+              onClick={() => scrollToSection('smartphones')}
+            >
+              Products
+            </Link>
+            <button
+              className="text-white text-center hover:bg-black transition-all duration-300 p-2 rounded"
+            >
+              Cart
+            </button>
+            <button
+              className="text-white text-center hover:bg-black transition-all duration-300 p-2 rounded"
+            >
+              Login
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Products Section - Below Navbar */}
-      <div id="products" className="bg-[#122F3D] text-white py-4">
-        <div className="mx-auto flex flex-wrap space-x-4">
-          <Link
-            to="#smartphones"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            Smartphones
-          </Link>
-          <Link
-            to="#smartwatches"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            Smartwatches
-          </Link>
-          <Link
-            to="#laptops"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            Laptops
-          </Link>
-          <Link
-            to="#controllers"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            Controllers
-          </Link>
-          <Link
-            to="#drones"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            Drones
-          </Link>
-          <Link
-            to="#mice"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            Mice
-          </Link>
-          <Link
-            to="#keyboards"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            Keyboards
-          </Link>
-          <Link
-            to="#graphics-cards"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            Graphics Cards
-          </Link>
-          <Link
-            to="#ssds"
-            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-          >
-            SSDs
-          </Link>
+      <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px]">
+        <div className="mx-auto flex flex-wrap gap-4 px-4">
+          {[
+            'Smartphones',
+            'Smartwatches',
+            'Laptops',
+            'Controllers',
+            'Drones',
+            'Mice',
+            'Keyboards',
+            'Graphics Cards',
+            'SSDs',
+          ].map((item) => (
+            <Link
+              key={item}
+              to={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+              className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            >
+              {item}
+            </Link>
+          ))}
         </div>
       </div>
 
       {/* Background Image */}
       <div>
         <img
-          src={backgroundImage} // Use the imported image
+          src={backgroundImage}
           alt="Background"
-          style={{
-            width: '100%',
-            height: 'auto', // Maintain aspect ratio
-            objectFit: 'cover',
-            // marginBottom: '10%',// Ensures image fills container properly
-          }}
+          className="w-full h-auto object-cover"
         />
       </div>
+
       {/* Section to scroll to */}
-      <div id="smartphones" style={{ background: 'white' }}>
-      </div>
+      <div id="smartphones"></div>
     </>
   );
 };
