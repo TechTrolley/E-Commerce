@@ -80,7 +80,7 @@ const Products = () => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full object-cover"
                 />
                 <div className="p-4">
                   <h2 className="text-xl font-bold mb-2">{product.name}</h2>
