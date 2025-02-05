@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import watchImage from './Watch.jpg';
-import phoneImage from './sams21.png';
+import watchImage from './s222.webp';
+import phoneImage from './s21u.jpg';
 import lapImage from './tuf.png';
 import Controllers from './joys.jpg';
 import Mouse from './mouse.webp';
@@ -13,13 +13,13 @@ const phoneList = () => {
   const phoneList = [
     {
       id: 1,
-      name: 'SmartPhones',
+      name: 'Samsung S21',
       description: 'Explore the latest and greatest smartphones on the market.',
       image: phoneImage,
     },
     {
       id: 2,
-      name: 'SmartWatches',
+      name: 'Samsung S22',
       description: 'Discover the future of wearable technology with our collection of smartwatches.',
       image: watchImage,
     },
