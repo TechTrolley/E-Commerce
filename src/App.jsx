@@ -15,8 +15,6 @@ function App() {
         <Route path="/" element={
           <>
             <Navbar />
-            {/* Add your home component here */}
-            <div>Home Page or Login Page</div>
           </>
         }/>
         

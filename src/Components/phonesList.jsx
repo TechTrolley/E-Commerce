@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import watchImage from './s222.webp';
-import phoneImage from './s21u.jpg';
-import lapImage from './tuf.png';
-import Controllers from './joys.jpg';
+import phoneImage from './s21.png';
+import lapImage from './samsungs23fe.png';
+import Controllers from './samsungs24ultra.webp';
 import Mouse from './mouse.webp';
 import Drones from './drone.webp';
 import Rtx from './rtx.jpg';
@@ -14,19 +14,19 @@ const phoneList = () => {
     {
       id: 1,
       name: 'Samsung S21',
-      description: 'Explore the latest and greatest smartphones on the market.',
+      description: 'Samsung Galaxy S21 5G Android smartphone. The new Dual zoom lens system is faster and sharper than any zoom before...',
       image: phoneImage,
     },
     {
       id: 2,
       name: 'Samsung S22',
-      description: 'Discover the future of wearable technology with our collection of smartwatches.',
+      description: 'Samsung Galaxy S22 5G Android smartphone. The Samsung Galaxy S22 series was unveiled on the 8th February 2022...',
       image: watchImage,
     },
     {
       id: 3,
-      name: 'Laptops',
-      description: 'Grab the Best Deals on Laptops with Power, Performance, and Portability at Unbeatable Prices!',
+      name: 'Samsung S23 Fe',
+      description: 'Each smartphone features a refined design, powerful processor, and a pro-grade camera system that rivals the best on the market.',
       image: lapImage,
     },
     {
