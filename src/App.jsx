@@ -19,6 +19,7 @@ function App() {
         }/>
         
         <Route path="/products" element={
+          
           <>
             <Navbar />
             <Products />

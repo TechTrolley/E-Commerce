@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import watchImage from './Watch.jpg';
-import phoneImage from './rog.jpg';
-import lapImage from './tuf.png';
-import Controllers from './joys.jpg';
-import Mouse from './mouse.webp';
-import Drones from './drone.webp';
-import Rtx from './rtx.jpg';
-import speak from './speak.webp';
+import watchImage from '../assets/watch.jpg';
+import phoneImage from '../assets/rog.jpg';
+import lapImage from '../assets/tuf.png';
+import Controllers from '../assets/joys.jpg';
+import Mouse from '../assets/mouse.webp';
+import Drones from '../assets/drone.webp';
+import Rtx from '../assets/rtx.jpg';
+import speak from '../assets/speak.webp';
 
 const Products = () => {
   const products = [

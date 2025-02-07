@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import watchImage from './Watch.jpg';
-import phoneImage from './sams21.png';
-import lapImage from './tuf.png';
-import Controllers from './joys.jpg';
-import Mouse from './mouse.webp';
-import Drones from './drone.webp';
-import Rtx from './rtx.jpg';
-import speak from './speak.webp';
+import watchImage from '../assets/Watch.jpg';
+import phoneImage from '../assets/sams21.png';
+import lapImage from '../assets/tuf.png';
+import Controllers from '../assets/joys.jpg';
+import Mouse from '../assets/mouse.webp';
+import Drones from '../assets/drone.webp';
+import Rtx from '../assets/rtx.jpg';
+import speak from '../assets/speak.webp';
 
 const ProductDetails = () => {
   const { id } = useParams();

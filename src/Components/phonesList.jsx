@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import watchImage from './samsungs22.jfif';
-import phoneImage from './s21.png';
-import lapImage from './samsungs23fe.jpg';
-import Controllers from './samsungs24ultra.webp';
-import Mouse from './iphone15.png';
-import Drones from './iphone14.png';
-import Rtx from './iphone16.png';
-import speak from './iphone16promax.png';
+import watchImage from '../assets/samsungs22.jfif';
+import phoneImage from '../assets/s21.png';
+import lapImage from '../assets/samsungs23fe.jpg';
+import Controllers from '../assets/samsungs24ultra.webp';
+import Mouse from '../assets/iphone15.png';
+import Drones from '../assets/iphone14.png';
+import Rtx from '../assets/iphone16.png';
+import speak from '../assets/iphone16promax.png';
 
 const phoneList = () => {
   const phoneList = [

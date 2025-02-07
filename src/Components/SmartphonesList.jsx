@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import iPhoneImage from './rog.jpg';
-import samsungImage from './rog.jpg';
+import iPhoneImage from '../assets/rog.jpg';
+import samsungImage from '../assets/rog.jpg';
 
 const SmartphonesList = () => {
   // ... (same smartphone data array)

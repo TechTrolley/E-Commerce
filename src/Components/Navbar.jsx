@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import backgroundImage from './home.png';
-//import SplashCursor from './SplashCursor'
+import backgroundImage from '../assets/home.png';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -146,7 +145,7 @@ const Navbar = () => {
 
       {/* Products Section - Below Navbar */}
       <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px]">
-        <div className="mx-auto flex flex-wrap gap-4 px-4">
+        <div className="mx-auto flex flex-wrap justify-center gap-4 px-4">
           {[
             'Smartphones',
             'Smartwatches',
@@ -159,12 +158,15 @@ const Navbar = () => {
             'SSDs',
           ].map((item) => (
             <Link
-              key={item}
-              to={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-              className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-            >
+            key="smartphones"
+            to="/smartphones"
+            className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
+            
+      
+          >
               {item}
             </Link>
+            
           ))}
         </div>
       </div>
