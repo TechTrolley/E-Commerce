@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
@@ -90,12 +91,15 @@ const Navbar = () => {
             </button>
 
             {/* Login Button */}
-            <button className="flex items-center justify-center text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
+            <Link
+              to="/login"
+              className="flex items-center justify-center text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg"
+            >
               <FaUser size={25} />
               <span className="hidden sm:block pl-2 uppercase tracking-wide font-semibold">
                 Login
               </span>
-            </button>
+            </Link>
 
             {/* Mobile Menu Toggle Button */}
             <div className="md:hidden">
@@ -134,17 +138,25 @@ const Navbar = () => {
             >
               Cart
             </button>
-            <button
+            <Link
+              to="/login"
               className="text-white text-center hover:bg-black transition-all duration-300 p-2 rounded"
             >
               Login
-            </button>
+            </Link>
           </div>
         )}
       </nav>
 
       {/* Products Section - Below Navbar */}
-      <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px]">
+      <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px]" 
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 1000,
+      }}>
         <div className="mx-auto flex flex-wrap justify-center gap-4 px-4">
           {[
             'Smartphones',
@@ -161,12 +173,9 @@ const Navbar = () => {
             key="smartphones"
             to="/smartphones"
             className="block hover:bg-[#CC313D] hover:text-white-900 px-3 py-1 text-sm rounded transition-all duration-300"
-            
-      
-          >
+            >
               {item}
             </Link>
-            
           ))}
         </div>
       </div>
