@@ -53,7 +53,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-[#CC313D] text-white py-3 rounded-lg hover:bg-[#a92631] transition duration-300"
+            className="w-full bg-[#CC313D] text-white py-3 rounded-lg hover:bg-[#399f2e] transition duration-300"
           >
             Login
           </button>

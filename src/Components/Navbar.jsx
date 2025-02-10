@@ -64,7 +64,7 @@ const Navbar = () => {
           </div>
 
           {/* Centered Search Bar (Amazon-like) */}
-          <div className="relative flex-grow max-w-[900px] mx-auto">
+          <div className="relative flex-grow max-w-[860px] mx-auto ml-28">
             <input
               type="text"
               placeholder="Search for products, brands, and more"
@@ -173,7 +173,7 @@ const Navbar = () => {
       </nav>
 
       {/* Products Section - Below Navbar */}
-      <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px]" 
+      <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px]"
       style={{
         position: 'fixed',
         top: 0,
@@ -181,7 +181,7 @@ const Navbar = () => {
         width: '100%',
         zIndex: 1000,
       }}>
-        <div className="mx-auto flex flex-wrap justify-center gap-4 px-4">
+        <div className="mx-auto flex flex-wrap justify-center gap-8 px-4 pr-48 font-semibold">
           {[
             'Smartphones',
             'Smartwatches',
