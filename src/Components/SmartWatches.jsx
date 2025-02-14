@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import watchImage from '../assets/watch.jpg';
-import phoneImage from '../assets/sams21.png';
+import watchImage from '../assets/samsungswatch2.avif';
+import phoneImage from '../assets/samsungswatch1.jpg';
 import lapImage from '../assets/tuf.png';
 import Controllers from '../assets/joys.jpg';
 import Mouse from '../assets/mouse.webp';
@@ -13,13 +13,13 @@ const SmartWatches = () => {
   const phoneList = [
     {
       id: 1,
-      name: 'SmartPhones',
+      name: 'Samsung Galaxy Fit3',
       description: 'Explore the latest and greatest smartphones on the market.',
       image: phoneImage,
     },
     {
       id: 2,
-      name: 'SmartWatches',
+      name: '',
       description: 'Discover the future of wearable technology with our collection of smartwatches.',
       image: watchImage,
     },
@@ -55,6 +55,30 @@ const SmartWatches = () => {
     },
     {
       id: 8,
+      name: 'Speakers',
+      description: 'Grab the Best Deals on Speakers – Crystal-Clear Sound for Every Moment.',
+      image: speak,
+    },
+    {
+      id: 9,
+      name: 'Speakers',
+      description: 'Grab the Best Deals on Speakers – Crystal-Clear Sound for Every Moment.',
+      image: speak,
+    },
+    {
+      id: 10,
+      name: 'Speakers',
+      description: 'Grab the Best Deals on Speakers – Crystal-Clear Sound for Every Moment.',
+      image: speak,
+    },
+    {
+      id: 11,
+      name: 'Speakers',
+      description: 'Grab the Best Deals on Speakers – Crystal-Clear Sound for Every Moment.',
+      image: speak,
+    },
+    {
+      id:12,
       name: 'Speakers',
       description: 'Grab the Best Deals on Speakers – Crystal-Clear Sound for Every Moment.',
       image: speak,
