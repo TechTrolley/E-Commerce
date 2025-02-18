@@ -5,6 +5,7 @@ import Products from './Components/Products'; // Adjusted path to Products compo
 import SmartphonesList from './Components/phonesList';
 import ProductDetails from './Components/ProductDetails';
 import SmartWatches from './Components/SmartWatches';
+import Laptops from './Components/Laptops';
 import Login from './Components/login';
 import Signup from './Components/signup';
 
@@ -32,6 +33,8 @@ function App() {
         <Route path="/smartphones" element={<SmartphonesList />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/smartwatches" element={<SmartWatches />} />
+        <Route path="/laptops" element={<Laptops />} />
+
         <Route path="/login" element={<Login />} />  
         <Route path="/signup" element={<Signup />} />        
       </Routes>

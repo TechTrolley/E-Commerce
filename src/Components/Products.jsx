@@ -68,18 +68,22 @@ const Products = () => {
         {products.map((product) => {
           const isSmartphone = product.name === 'SmartPhones';
           const isSmartwatch = product.name === 'SmartWatches';
-          const Wrapper = isSmartphone || isSmartwatch ? Link : 'div';
+          const isLaptop = product.name === 'Laptops';
+
+          const Wrapper = isSmartphone || isSmartwatch || isLaptop ? Link : 'div';
           const wrapperProps = isSmartphone
             ? { to: '/smartphones' }
             : isSmartwatch
             ? { to: '/smartwatches' }
+            : isLaptop
+            ? { to: '/laptops' }
             : {};
 
           return (
             <Wrapper
               {...wrapperProps}
               key={product.id}
-              className={isSmartphone || isSmartwatch ? "cursor-pointer block" : "block"}
+              className="cursor-pointer block"
             >
               <div className="bg-white border rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:scale-105 h-full">
                 <img
@@ -90,9 +94,6 @@ const Products = () => {
                 <div className="p-4">
                   <h2 className="text-xl font-bold mb-2">{product.name}</h2>
                   <p className="text-gray-600 mb-4">{product.description}</p>
-                  <div className="text-lg font-semibold text-blue-500">
-                    {product.price}
-                  </div>
                 </div>
               </div>
             </Wrapper>
