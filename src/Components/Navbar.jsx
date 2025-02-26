@@ -25,6 +25,7 @@ const Navbar = () => {
       <nav className="bg-[#CC313D] p-4 border-b-2 border-gray-200 fixed top-0 left-0 w-full z-1000">
         <div className="mx-auto flex flex-wrap justify-between items-center px-4 md:px-8">
           <div className="text-white text-xl font-bold flex-shrink-0">Tech Trolley</div>
+          
           <div className="relative flex-grow max-w-[860px] mx-auto ml-28">
             <input
               type="text"
@@ -37,18 +38,29 @@ const Navbar = () => {
               </svg>
             </button>
           </div>
+          
           <div className="flex items-center space-x-4">
-            <Link onClick={() => scrollToSection('smartphones')} to="/products" className="text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg hidden md:block">
+            <Link 
+              onClick={() => scrollToSection('smartphones')} 
+              to="/products" 
+              className="text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg hidden md:block"
+            >
               <span className="uppercase tracking-wide font-semibold">Products</span>
             </Link>
+            
             <button className="flex items-center space-x-2 text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg relative">
               <FaShoppingCart size={25} />
               <span className="hidden sm:block pl-1 uppercase tracking-wide font-semibold">Cart</span>
             </button>
-            <Link to="/login" className="flex items-center justify-center text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg">
+            
+            <Link 
+              to="/login" 
+              className="flex items-center justify-center text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg"
+            >
               <FaUser size={25} />
               <span className="hidden sm:block pl-2 uppercase tracking-wide font-semibold">Login</span>
             </Link>
+            
             <div className="md:hidden">
               <button onClick={toggleMobileMenu} className="text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
@@ -58,6 +70,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        
         {isMobileMenuOpen && (
           <div className="md:hidden flex flex-col space-y-2 mt-2 bg-[#CC313D] p-2 rounded">
             <Link to="/products" className="text-white text-center hover:bg-black transition-all duration-300 p-2 rounded" onClick={() => scrollToSection('smartphones')}>Products</Link>
@@ -66,18 +79,25 @@ const Navbar = () => {
           </div>
         )}
       </nav>
+      
       <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px] fixed top-0 left-0 w-full z-1000">
         <div className="mx-auto flex flex-wrap justify-center gap-8 px-4 pr-48 font-semibold">
           {['Smartphones', 'Smartwatches', 'Laptops', 'Controllers', 'Drones', 'Mice', 'Keyboards', 'Graphics Cards', 'SSDs'].map((item) => (
-            <Link key={item} to={`/${item.toLowerCase()}`} className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300">
+            <Link 
+              key={item} 
+              to={`/${item.toLowerCase()}`} 
+              className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            >
               {item}
             </Link>
           ))}
         </div>
       </div>
+      
       <div>
         <img src={backgroundImage} alt="Background" className="w-full h-auto object-cover" />
       </div>
+      
       <div id="smartphones"></div>
     </>
   );
