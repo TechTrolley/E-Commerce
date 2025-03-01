@@ -6,9 +6,10 @@ import SmartphonesList from './Components/phonesList';
 import ProductDetails from './Components/ProductDetails';
 import SmartWatches from './Components/SmartWatches';
 import Laptops from './Components/Laptops';
-import Login from './Components/login';
+//import Login from './Components/login';
 import Signup from './Components/signup';
 import WatchDetails from './Components/WatchDetails';
+import Account from "./Components/Accounts";
 
 
 function App() {
@@ -37,8 +38,9 @@ function App() {
         <Route path="/laptops" element={<Laptops />} />
         <Route path="/" element={<SmartWatches />} />
         <Route path="/watch/:id" element={<WatchDetails />} />
+        <Route path="/account" element={<Account />} />
 
-        <Route path="/login" element={<Login />} />  
+        
         <Route path="/signup" element={<Signup />} />        
       </Routes>
     </Router>

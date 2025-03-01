@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^11.4.0",
     "framer-motion": "^12.4.1",
+    "js-cookie": "^3.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^4.11.0",
