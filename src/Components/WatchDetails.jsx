@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import watch1 from '../assets/samsungswatch2.avif';
 import phoneImage from '../assets/samsunggalaxyfe.jpg';
 import lapImage from '../assets/samsunggalaxywatch4.webp';
@@ -24,7 +24,7 @@ const WatchDetails = () => {
       description: 'Advanced fitness tracking with sleek design.',
       image: watch1,
       price: '$199-$349',
-      specs: ['1.4" AMOLED Display', 'Advanced Sleep & Fitness Tracking', 'Wear OS by Google', 'IP68 Water Resistance', 'LTE & Bluetooth Models'],
+      specs: ['1.4" AMOLED Display', 'Advanced Sleep & Fitness Tracking', 'Wear OS by Google', 'IP68 Water Resistance', 'LTE & Bluetooth Models']
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ const WatchDetails = () => {
       description: 'A rugged smartwatch designed for extreme conditions.',
       image: phoneImage,
       price: '$399-$599',
-      specs: ['1.5" AMOLED Display', 'Long Battery Life', 'GPS & Altimeter', 'Military-Grade Durability', 'ECG & Blood Pressure Monitoring'],
+      specs: ['1.5" AMOLED Display', 'Long Battery Life', 'GPS & Altimeter', 'Military-Grade Durability', 'ECG & Blood Pressure Monitoring']
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ const WatchDetails = () => {
       description: 'Powerful smartwatch with advanced health monitoring.',
       image: lapImage,
       price: '$399-$799',
-      specs: ['Always-On Retina Display', 'S9 Chip for Faster Performance', 'Blood Oxygen & ECG Apps', 'Crash Detection', 'IP6X Dust Resistance'],
+      specs: ['Always-On Retina Display', 'S9 Chip for Faster Performance', 'Blood Oxygen & ECG Apps', 'Crash Detection', 'IP6X Dust Resistance']
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ const WatchDetails = () => {
       description: 'Built for adventure with premium features.',
       image: Controllers,
       price: '$799-$999',
-      specs: ['49mm Titanium Case', 'Dual-Frequency GPS', 'Depth & Water Temperature Sensor', 'Larger Digital Crown', '36-Hour Battery Life'],
+      specs: ['49mm Titanium Case', 'Dual-Frequency GPS', 'Depth & Water Temperature Sensor', 'Larger Digital Crown', '36-Hour Battery Life']
     },
     {
       id: 5,
@@ -56,7 +56,7 @@ const WatchDetails = () => {
       description: 'An even more powerful Ultra watch.',
       image: Mouse,
       price: '$899-$1099',
-      specs: ['Brighter Display (3000 nits)', 'S9 Chip for Better Performance', 'Action Button Customization', 'Longer Battery Life', 'Enhanced Navigation Features'],
+      specs: ['Brighter Display (3000 nits)', 'S9 Chip for Better Performance', 'Action Button Customization', 'Longer Battery Life', 'Enhanced Navigation Features']
     },
     {
       id: 6,
@@ -64,7 +64,7 @@ const WatchDetails = () => {
       description: 'Stylish smartwatch with fitness tracking.',
       image: Drones,
       price: '$99-$149',
-      specs: ['1.96" AMOLED Display', 'Heart Rate & SpO2 Monitoring', 'Bluetooth Calling', '100+ Sports Modes', '5 ATM Water Resistance'],
+      specs: ['1.96" AMOLED Display', 'Heart Rate & SpO2 Monitoring', 'Bluetooth Calling', '100+ Sports Modes', '5 ATM Water Resistance']
     },
     {
       id: 7,
@@ -72,51 +72,11 @@ const WatchDetails = () => {
       description: 'Affordable fitness smartwatch.',
       image: Rtx,
       price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 7,
-      name: 'Boat Storm',
-      description: 'Affordable fitness smartwatch.',
-      image: Rtx,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 7,
-      name: 'Boat Storm',
-      description: 'Affordable fitness smartwatch.',
-      image: Rtx,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 7,
-      name: 'Boat Storm',
-      description: 'Affordable fitness smartwatch.',
-      image: Rtx,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 7,
-      name: 'Boat Storm',
-      description: 'Affordable fitness smartwatch.',
-      image: Rtx,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 7,
-      name: 'Boat Storm',
-      description: 'Affordable fitness smartwatch.',
-      image: Rtx,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
+      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life']
+    }
   ];
 
-  const watch = watches.find((w) => w.id === parseInt(id));
+  const watch = watches.find(w => w.id === parseInt(id));
 
   if (!watch) {
     return <div className="text-center mt-8">Watch not found</div>;
@@ -124,7 +84,7 @@ const WatchDetails = () => {
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingItem = cart.find((item) => item.id === watch.id);
+    const existingItem = cart.find(item => item.id === watch.id);
 
     if (existingItem) {
       existingItem.quantity += quantity;
@@ -144,9 +104,7 @@ const WatchDetails = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto p-6">
-      <Link to="/watches" className="text-blue-500 mb-4 inline-block">
-        &larr; Back to Watches
-      </Link>
+      <Link to="/watches" className="text-blue-500 mb-4 inline-block">&larr; Back to Watches</Link>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -162,9 +120,7 @@ const WatchDetails = () => {
             <h3 className="text-xl font-semibold">Key Features:</h3>
             <ul className="list-disc pl-6 space-y-2">
               {watch.specs.map((spec, index) => (
-                <li key={index} className="text-gray-600">
-                  {spec}
-                </li>
+                <li key={index} className="text-gray-600">{spec}</li>
               ))}
             </ul>
           </div>

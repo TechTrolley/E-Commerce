@@ -19,7 +19,7 @@ const ProductDetails = () => {
       name: 'Samsung Galaxy S21 5G',
       description: 'Explore the latest and greatest smartphones on the market.',
       image: phoneImage,
-      price: '$599-$1299',
+      price: 'Rs.22,999',
       specs: ['6.2" Dynamic AMOLED 2X Display', '5G Connectivity', 'Triple Camera (12MP + 64MP + 12MP)', '4000mAh Battery', '8GB RAM', '128GB/256GB Storage']
     },
     {
@@ -27,7 +27,7 @@ const ProductDetails = () => {
       name: 'Samsung Galaxy S22 5G',
       description: 'Discover the future of wearable technology with our collection of smartwatches.',
       image: watchImage,
-      price: '$199-$599',
+      price: 'Rs.39,499',
       specs: ['6.1" Dynamic AMOLED 2X Display', 'Snapdragon 8 Gen 1 Processor', 'Triple Camera (50MP + 10MP + 12MP)', '3700mAh Battery', '8GB RAM', '128GB/256GB Storage']
     },
     {
@@ -35,7 +35,7 @@ const ProductDetails = () => {
       name: 'Samsung S23 FE 5G',
       description: 'Grab the Best Deals on Laptops with Power, Performance, and Portability at Unbeatable Prices!',
       image: lapImage,
-      price: '$199-$599',
+      price: 'Rs.59,999',
       specs: ['6.4" Dynamic AMOLED 2X Display', 'Exynos 2200 Processor', 'Triple Camera (50MP + 8MP + 12MP)', '4500mAh Battery', '8GB RAM', '128GB/256GB Storage']
     },
     {
@@ -43,7 +43,7 @@ const ProductDetails = () => {
       name: 'Samsung S24 Ultra',
       description: 'Shop the Best Deals on Gaming Controllers – Precision, Comfort, and Style at Your Fingertips!',
       image: Controllers,
-      price: '$199-$599',
+      price: 'Rs.109,999',
       specs: ['6.8" QHD+ AMOLED Display', 'Snapdragon 8 Gen 3 Processor', 'Quad Camera (200MP + 10MP + 12MP + 50MP)', '5000mAh Battery', '12GB RAM', '256GB/512GB Storage']
     },
     {
@@ -87,23 +87,18 @@ const ProductDetails = () => {
   }
 
   const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingItem = cart.find(item => item.id === product.id);
-
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingItem = cart.find((item) => item.id === product.id);
+  
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
-      cart.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        quantity: quantity,
-      });
+      cart.push({ ...product, quantity });
     }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    window.dispatchEvent(new Event('cartUpdated')); // Trigger cart update
-    console.log(`Added ${quantity} ${product.name} to cart`);
+  
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${quantity} ${product.name} added to cart!`);
+    window.dispatchEvent(new Event("cartUpdated")); // Update cart across app
   };
 
   const handleBuyNow = () => {
