@@ -126,11 +126,17 @@ import backgroundImage from "../assets/home.png";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [previousSearch, setPreviousSearch] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = Cookies.get("userToken");
     setIsLoggedIn(!!token);
+
+    // Retrieve the last searched term from local storage
+    const lastSearch = localStorage.getItem("lastSearch") || "";
+    setPreviousSearch(lastSearch);
   }, []);
 
   const handleGoogleSignIn = async () => {
@@ -152,24 +158,51 @@ const Navbar = () => {
     }
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (!searchTerm.trim()) return;
+
+    // Store the last searched term in local storage
+    localStorage.setItem("lastSearch", searchTerm);
+
+    // Redirect to phone list if the search contains "phone" or "smartphone"
+    if (searchTerm.toLowerCase().includes("phone") || searchTerm.toLowerCase().includes("smartphone")) {
+      navigate("/smartphones");
+    }
+  };
+
   return (
     <>
+      {/* Main Navbar */}
       <nav className="bg-[#CC313D] p-4 border-b-2 border-gray-200 fixed top-0 left-0 w-full z-[1000]">
         <div className="mx-auto flex flex-wrap justify-between items-center px-4 md:px-8">
           <div className="text-white text-xl font-bold flex-shrink-0">
             Tech Trolley
           </div>
 
-          <div className="relative flex-grow max-w-[860px] mx-auto ml-28">
+          {/* Search Bar */}
+          <form 
+            className="relative flex-grow max-w-[860px] mx-auto ml-28" 
+            onSubmit={handleSearchSubmit}
+          >
             <input
               type="text"
-              placeholder="Search for products, brands, and more"
+              placeholder={previousSearch || "Search for products, brands, and more"}
+              value={searchTerm}
+              onChange={handleSearchChange}
               className="pl-10 pr-4 py-2.5 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
             />
-            <button className="absolute right-0 top-0 bottom-0 px-4 py-2.5 bg-[#FF9900] rounded-full text-white flex items-center justify-center hover:bg-[#FFB84D]">
+            <button
+              type="submit"
+              className="absolute right-0 top-0 bottom-0 px-4 py-2.5 bg-[#FF9900] rounded-full text-white flex items-center justify-center hover:bg-[#FFB84D]"
+            >
               🔍
             </button>
-          </div>
+          </form>
 
           <div className="flex items-center space-x-4">
             <Link
@@ -181,17 +214,18 @@ const Navbar = () => {
               </span>
             </Link>
 
-            {/* Cart Button Redirects to Carts.jsx */}
+            {/* Cart Button */}
             <button
-  onClick={() => navigate("/cart")}
-  className="flex items-center space-x-2 text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg relative"
->
-  <FaShoppingCart size={25} />
-  <span className="hidden sm:block pl-1 uppercase tracking-wide font-semibold">
-    Cart
-  </span>
-</button>
+              onClick={() => navigate("/cart")}
+              className="flex items-center space-x-2 text-white hover:bg-black transition-all duration-300 p-3 rounded-full border border-white shadow-md hover:shadow-lg relative"
+            >
+              <FaShoppingCart size={25} />
+              <span className="hidden sm:block pl-1 uppercase tracking-wide font-semibold">
+                Cart
+              </span>
+            </button>
 
+            {/* Account/Login */}
             {isLoggedIn ? (
               <button
                 onClick={() => navigate("/account")}
@@ -214,6 +248,32 @@ const Navbar = () => {
         </div>
       </nav>
 
+      {/* Category Navbar */}
+      <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px] fixed top-[2px] left-0 w-full z-[999]">
+        <div className="mx-auto flex flex-wrap justify-center gap-8 px-4 pr-48 font-semibold">
+          {[
+            "Smartphones",
+            "Smartwatches",
+            "Laptops",
+            "Controllers",
+            "Drones",
+            "Mice",
+            "Keyboards",
+            "Graphics Cards",
+            "SSDs",
+          ].map((item) => (
+            <Link
+              key={item}
+              to={`/${item.toLowerCase()}`}
+              className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+            >
+              {item}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Background Image */}
       <div>
         <img
           src={backgroundImage}
@@ -226,4 +286,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
