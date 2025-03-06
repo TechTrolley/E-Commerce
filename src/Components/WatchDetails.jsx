@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import watch1 from '../assets/samsungswatch2.avif';
 import phoneImage from '../assets/samsunggalaxyfe.jpg';
 import lapImage from '../assets/samsunggalaxywatch4.webp';
@@ -16,67 +16,110 @@ import b4 from '../assets/boatwaveneo.webp';
 const WatchDetails = () => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
+  const [customAmount, setCustomAmount] = useState('');
+  const [rating, setRating] = useState(0);
+  const [showRatingMessage, setShowRatingMessage] = useState(false);
 
   const watches = [
     {
       id: 1,
-      name: 'Samsung Galaxy Watch 4',
+      name: 'Samsung Galaxy Watch FE',
       description: 'Advanced fitness tracking with sleek design.',
-      image: watch1,
+      image: phoneImage,
       price: '$199-$349',
-      specs: ['1.4" AMOLED Display', 'Advanced Sleep & Fitness Tracking', 'Wear OS by Google', 'IP68 Water Resistance', 'LTE & Bluetooth Models']
+      specs: ['1.4" AMOLED Display', 'Advanced Sleep & Fitness Tracking', 'Wear OS by Google', 'IP68 Water Resistance', 'LTE & Bluetooth Models'],
     },
     {
       id: 2,
-      name: 'Samsung Galaxy Watch Ultra',
+      name: 'Samsung Galaxy Fit3',
       description: 'A rugged smartwatch designed for extreme conditions.',
-      image: phoneImage,
+      image: watch1,
       price: '$399-$599',
-      specs: ['1.5" AMOLED Display', 'Long Battery Life', 'GPS & Altimeter', 'Military-Grade Durability', 'ECG & Blood Pressure Monitoring']
+      specs: ['1.5" AMOLED Display', 'Long Battery Life', 'GPS & Altimeter', 'Military-Grade Durability', 'ECG & Blood Pressure Monitoring'],
     },
     {
       id: 3,
-      name: 'Apple Watch Series 9',
+      name: 'Samsung Galaxy Watch 4',
       description: 'Powerful smartwatch with advanced health monitoring.',
       image: lapImage,
       price: '$399-$799',
-      specs: ['Always-On Retina Display', 'S9 Chip for Faster Performance', 'Blood Oxygen & ECG Apps', 'Crash Detection', 'IP6X Dust Resistance']
+      specs: ['Always-On Retina Display', 'S9 Chip for Faster Performance', 'Blood Oxygen & ECG Apps', 'Crash Detection', 'IP6X Dust Resistance'],
     },
     {
       id: 4,
-      name: 'Apple Watch Ultra',
+      name: 'Samsung Galaxy Ultra',
       description: 'Built for adventure with premium features.',
       image: Controllers,
       price: '$799-$999',
-      specs: ['49mm Titanium Case', 'Dual-Frequency GPS', 'Depth & Water Temperature Sensor', 'Larger Digital Crown', '36-Hour Battery Life']
+      specs: ['49mm Titanium Case', 'Dual-Frequency GPS', 'Depth & Water Temperature Sensor', 'Larger Digital Crown', '36-Hour Battery Life'],
     },
     {
       id: 5,
-      name: 'Apple Watch Ultra 2',
+      name: 'Apple Watch Ultra',
       description: 'An even more powerful Ultra watch.',
-      image: Mouse,
+      image: Drones,
       price: '$899-$1099',
-      specs: ['Brighter Display (3000 nits)', 'S9 Chip for Better Performance', 'Action Button Customization', 'Longer Battery Life', 'Enhanced Navigation Features']
+      specs: ['Brighter Display (3000 nits)', 'S9 Chip for Better Performance', 'Action Button Customization', 'Longer Battery Life', 'Enhanced Navigation Features'],
     },
     {
       id: 6,
-      name: 'Boat Wave Elevate Pro',
+      name: 'Apple Watch 9',
       description: 'Stylish smartwatch with fitness tracking.',
-      image: Drones,
+      image: Mouse,
       price: '$99-$149',
-      specs: ['1.96" AMOLED Display', 'Heart Rate & SpO2 Monitoring', 'Bluetooth Calling', '100+ Sports Modes', '5 ATM Water Resistance']
+      specs: ['1.96" AMOLED Display', 'Heart Rate & SpO2 Monitoring', 'Bluetooth Calling', '100+ Sports Modes', '5 ATM Water Resistance'],
     },
     {
       id: 7,
-      name: 'Boat Storm',
+      name: 'Apple Watch Ultra 2',
       description: 'Affordable fitness smartwatch.',
       image: Rtx,
       price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life']
-    }
+      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
+    },
+    {
+      id: 8,
+      name: 'Apple Watch 10',
+      description: 'Affordable fitness smartwatch.',
+      image: speak,
+      price: '$49-$99',
+      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
+    },
+    {
+      id: 9,
+      name: 'Boat Wave Elevate Pro',
+      description: 'Affordable fitness smartwatch.',
+      image: b1,
+      price: '$49-$99',
+      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
+    },
+    {
+      id: 10,
+      name: 'Boat Storm',
+      description: 'Affordable fitness smartwatch.',
+      image: b2,
+      price: '$49-$99',
+      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
+    },
+    {
+      id: 11,
+      name: 'Boat Xtend Pro',
+      description: 'Affordable fitness smartwatch.',
+      image: b3,
+      price: '$49-$99',
+      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
+    },
+    {
+      id: 12,
+      name: 'Boat Wave Neo',
+      description: 'Affordable fitness smartwatch.',
+      image: b4,
+      price: '$49-$99',
+      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
+    },
   ];
 
-  const watch = watches.find(w => w.id === parseInt(id));
+  const watch = watches.find((w) => w.id === parseInt(id));
 
   if (!watch) {
     return <div className="text-center mt-8">Watch not found</div>;
@@ -84,7 +127,7 @@ const WatchDetails = () => {
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingItem = cart.find(item => item.id === watch.id);
+    const existingItem = cart.find((item) => item.id === watch.id);
 
     if (existingItem) {
       existingItem.quantity += quantity;
@@ -92,7 +135,7 @@ const WatchDetails = () => {
       cart.push({
         id: watch.id,
         name: watch.name,
-        price: watch.price,
+        price: customAmount || watch.price, // Use custom amount if provided
         quantity: quantity,
       });
     }
@@ -102,9 +145,21 @@ const WatchDetails = () => {
     console.log(`Added ${quantity} ${watch.name} to cart`);
   };
 
+  const handleBuyNow = () => {
+    console.log(`Buying ${quantity} ${watch.name} for Rs. ${customAmount || watch.price}`);
+    // Redirect to checkout or payment page logic here
+  };
+
+  const handleRateUs = () => {
+    setShowRatingMessage(true);
+    setTimeout(() => setShowRatingMessage(false), 3000); // Hide message after 3 seconds
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto p-6">
-      <Link to="/watches" className="text-blue-500 mb-4 inline-block">&larr; Back to Watches</Link>
+      <Link to="/watches" className="text-blue-500 mb-4 inline-block">
+        &larr; Back to Watches
+      </Link>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -120,7 +175,9 @@ const WatchDetails = () => {
             <h3 className="text-xl font-semibold">Key Features:</h3>
             <ul className="list-disc pl-6 space-y-2">
               {watch.specs.map((spec, index) => (
-                <li key={index} className="text-gray-600">{spec}</li>
+                <li key={index} className="text-gray-600">
+                  {spec}
+                </li>
               ))}
             </ul>
           </div>
@@ -136,6 +193,18 @@ const WatchDetails = () => {
             />
           </div>
 
+          <div className="flex items-center space-x-4">
+            <label className="text-lg font-semibold">Custom Amount (Rs):</label>
+            <input
+              type="number"
+              min="1"
+              value={customAmount}
+              onChange={(e) => setCustomAmount(e.target.value)}
+              className="w-20 px-3 py-2 border rounded"
+              placeholder="Enter amount"
+            />
+          </div>
+
           <div className="flex space-x-4">
             <button
               onClick={handleAddToCart}
@@ -143,6 +212,36 @@ const WatchDetails = () => {
             >
               Add to Cart
             </button>
+            <button
+              onClick={handleBuyNow}
+              className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors flex-1"
+            >
+              Buy Now
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold">Rate Us:</h3>
+            <div className="flex space-x-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  onClick={() => setRating(star)}
+                  className={`text-2xl ${star <= rating ? 'text-yellow-500' : 'text-gray-300'}`}
+                >
+                  ★
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={handleRateUs}
+              className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              Submit Rating
+            </button>
+            {showRatingMessage && (
+              <p className="text-green-600">Thank you for rating us {rating} stars!</p>
+            )}
           </div>
         </div>
       </div>
