@@ -79,11 +79,12 @@ const phoneList = () => {
                   {product.description}
                 </p>
                 <Link
-                  to={`/product/${product.id}`}
-                  className="mt-auto bg-blue-500 text-white py-2 px-4 rounded-lg text-center hover:bg-blue-600 transition-colors duration-300"
+                to={`/laptop/${product.id}`}
+                className="mt-auto bg-blue-500 text-white py-2 px-4 rounded-lg text-center hover:bg-blue-600 transition-colors duration-300"
                 >
                   View Details
-                </Link>
+                  </Link>
+
               </div>
             </div>
           </div>
