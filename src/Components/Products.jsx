@@ -5,7 +5,7 @@ import phoneImage from '../assets/rog.jpg';
 import lapImage from '../assets/tuf.png';
 import Controllers from '../assets/joys.jpg';
 import Mouse from '../assets/mouse.webp';
-import Drones from '../assets/drone.webp';
+import Drones from '../assets/airbuds.png';
 import Rtx from '../assets/rtx.jpg';
 import speak from '../assets/speak.webp';
 

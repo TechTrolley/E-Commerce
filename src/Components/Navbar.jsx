@@ -172,7 +172,7 @@ const Navbar = () => {
             'Smartwatches',
             'Laptops',
             'Controllers',
-            'Drones',
+            'AirBuds',
             'Mice',
             'Keyboards',
             'Graphics Cards',
