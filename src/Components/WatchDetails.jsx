@@ -1,186 +1,118 @@
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import watch1 from '../assets/samsungswatch2.avif';
-import phoneImage from '../assets/samsunggalaxyfe.jpg';
-import lapImage from '../assets/samsunggalaxywatch4.webp';
-import Controllers from '../assets/samsunggalaxywatchultra.jpeg';
-import Mouse from '../assets/applewatch9.webp';
-import Drones from '../assets/applewatchultra.png';
-import Rtx from '../assets/applewatchultra2.png';
-import speak from '../assets/applewatch10.png';
-import b1 from '../assets/boatwaveelevatepro.png';
-import b2 from '../assets/boatstorm.avif';
-import b3 from '../assets/boatxtendpro.webp';
-import b4 from '../assets/boatwaveneo.webp';
+import React, { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { db } from "../firebases/firebaseConfig";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const WatchDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [watch, setWatch] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
-  const [customAmount, setCustomAmount] = useState('');
-  const [rating, setRating] = useState(0);
-  const [showRatingMessage, setShowRatingMessage] = useState(false);
+  const [user, setUser] = useState(null);
 
-  const watches = [
-    {
-      id: 1,
-      name: 'Samsung Galaxy Watch FE',
-      description: 'Advanced fitness tracking with sleek design.',
-      image: phoneImage,
-      price: '$199-$349',
-      specs: ['1.4" AMOLED Display', 'Advanced Sleep & Fitness Tracking', 'Wear OS by Google', 'IP68 Water Resistance', 'LTE & Bluetooth Models'],
-    },
-    {
-      id: 2,
-      name: 'Samsung Galaxy Fit3',
-      description: 'A rugged smartwatch designed for extreme conditions.',
-      image: watch1,
-      price: '$399-$599',
-      specs: ['1.5" AMOLED Display', 'Long Battery Life', 'GPS & Altimeter', 'Military-Grade Durability', 'ECG & Blood Pressure Monitoring'],
-    },
-    {
-      id: 3,
-      name: 'Samsung Galaxy Watch 4',
-      description: 'Powerful smartwatch with advanced health monitoring.',
-      image: lapImage,
-      price: '$399-$799',
-      specs: ['Always-On Retina Display', 'S9 Chip for Faster Performance', 'Blood Oxygen & ECG Apps', 'Crash Detection', 'IP6X Dust Resistance'],
-    },
-    {
-      id: 4,
-      name: 'Samsung Galaxy Ultra',
-      description: 'Built for adventure with premium features.',
-      image: Controllers,
-      price: '$799-$999',
-      specs: ['49mm Titanium Case', 'Dual-Frequency GPS', 'Depth & Water Temperature Sensor', 'Larger Digital Crown', '36-Hour Battery Life'],
-    },
-    {
-      id: 5,
-      name: 'Apple Watch Ultra',
-      description: 'An even more powerful Ultra watch.',
-      image: Drones,
-      price: '$899-$1099',
-      specs: ['Brighter Display (3000 nits)', 'S9 Chip for Better Performance', 'Action Button Customization', 'Longer Battery Life', 'Enhanced Navigation Features'],
-    },
-    {
-      id: 6,
-      name: 'Apple Watch 9',
-      description: 'Stylish smartwatch with fitness tracking.',
-      image: Mouse,
-      price: '$99-$149',
-      specs: ['1.96" AMOLED Display', 'Heart Rate & SpO2 Monitoring', 'Bluetooth Calling', '100+ Sports Modes', '5 ATM Water Resistance'],
-    },
-    {
-      id: 7,
-      name: 'Apple Watch Ultra 2',
-      description: 'Affordable fitness smartwatch.',
-      image: Rtx,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 8,
-      name: 'Apple Watch 10',
-      description: 'Affordable fitness smartwatch.',
-      image: speak,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 9,
-      name: 'Boat Wave Elevate Pro',
-      description: 'Affordable fitness smartwatch.',
-      image: b1,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 10,
-      name: 'Boat Storm',
-      description: 'Affordable fitness smartwatch.',
-      image: b2,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 11,
-      name: 'Boat Xtend Pro',
-      description: 'Affordable fitness smartwatch.',
-      image: b3,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-    {
-      id: 12,
-      name: 'Boat Wave Neo',
-      description: 'Affordable fitness smartwatch.',
-      image: b4,
-      price: '$49-$99',
-      specs: ['1.3" HD Display', 'Real-time Heart Rate Monitoring', 'Multiple Sports Modes', 'IP67 Water & Dust Resistance', 'Up to 10 Days Battery Life'],
-    },
-  ];
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
 
-  const watch = watches.find((w) => w.id === parseInt(id));
+    return () => unsubscribe();
+  }, []);
 
-  if (!watch) {
-    return <div className="text-center mt-8">Watch not found</div>;
-  }
+  // Debugging: Log the product ID received from URL
+  useEffect(() => {
+    console.log("🆔 Watch ID from URL:", id);
+  }, [id]);
+
+  useEffect(() => {
+    const fetchWatch = async () => {
+      try {
+        console.log("📡 Fetching watch with ID:", id);
+
+        const docRef = doc(db, "watches", id);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          console.log("✅ Watch found:", docSnap.data());
+          setWatch({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          console.error("❌ Watch not found in Firestore!");
+        }
+      } catch (error) {
+        console.error("❌ Error fetching watch:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWatch();
+  }, [id]);
+
+  // Debugging: Fetch all watches to check if Firestore has data
+  useEffect(() => {
+    const fetchAllWatches = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "watches"));
+        if (querySnapshot.empty) {
+          console.warn("⚠️ No watches found in Firestore!");
+        } else {
+          querySnapshot.forEach((doc) => {
+            console.log("🔥 Watch in Firestore:", doc.id, doc.data());
+          });
+        }
+      } catch (error) {
+        console.error("❌ Error fetching all watches:", error);
+      }
+    };
+
+    fetchAllWatches();
+  }, []);
 
   const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const existingItem = cart.find((item) => item.id === watch.id);
+    if (!user) {
+      alert("Please log in to add items to your cart.");
+      navigate("/login");
+      return;
+    }
 
-    if (existingItem) {
-      existingItem.quantity += quantity;
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingItemIndex = cartItems.findIndex((item) => item.id === watch.id);
+
+    if (existingItemIndex !== -1) {
+      cartItems[existingItemIndex].quantity += quantity;
     } else {
-      cart.push({
+      cartItems.push({
         id: watch.id,
         name: watch.name,
-        price: customAmount || watch.price, // Use custom amount if provided
+        price: watch.price,
+        imageUrl: watch.imageUrl,
         quantity: quantity,
       });
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
-    window.dispatchEvent(new Event('cartUpdated'));
-    console.log(`Added ${quantity} ${watch.name} to cart`);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    alert("Added to cart successfully!");
+    navigate("/cart");
   };
 
-  const handleBuyNow = () => {
-    console.log(`Buying ${quantity} ${watch.name} for Rs. ${customAmount || watch.price}`);
-    // Redirect to checkout or payment page logic here
-  };
-
-  const handleRateUs = () => {
-    setShowRatingMessage(true);
-    setTimeout(() => setShowRatingMessage(false), 3000); // Hide message after 3 seconds
-  };
+  if (loading) return <div className="text-center mt-8">Loading watch details...</div>;
+  if (!watch) return <div className="text-center mt-8">Watch not found</div>;
 
   return (
     <div className="max-w-screen-xl mx-auto p-6">
-      <Link to="/watches" className="text-blue-500 mb-4 inline-block">
-        &larr; Back to Watches
-      </Link>
+      <Link to="/" className="text-blue-500 mb-4 inline-block">&larr; Back to Watches</Link>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white p-6 rounded-lg shadow-lg">
-          <img src={watch.image} alt={watch.name} className="w-full h-96 object-contain mb-6" />
+          <img src={watch.imageUrl} alt={watch.name} className="w-full h-96 object-contain mb-6" />
         </div>
 
         <div className="space-y-6">
           <h1 className="text-4xl font-bold">{watch.name}</h1>
-          <p className="text-2xl text-blue-600">{watch.price}</p>
+          <p className="text-2xl text-blue-600">${watch.price}</p>
           <p className="text-gray-600">{watch.description}</p>
-
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold">Key Features:</h3>
-            <ul className="list-disc pl-6 space-y-2">
-              {watch.specs.map((spec, index) => (
-                <li key={index} className="text-gray-600">
-                  {spec}
-                </li>
-              ))}
-            </ul>
-          </div>
 
           <div className="flex items-center space-x-4">
             <label className="text-lg font-semibold">Quantity:</label>
@@ -188,61 +120,17 @@ const WatchDetails = () => {
               type="number"
               min="1"
               value={quantity}
-              onChange={(e) => setQuantity(Math.max(1, e.target.value))}
+              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
               className="w-20 px-3 py-2 border rounded"
             />
           </div>
 
-          <div className="flex items-center space-x-4">
-            <label className="text-lg font-semibold">Custom Amount (Rs):</label>
-            <input
-              type="number"
-              min="1"
-              value={customAmount}
-              onChange={(e) => setCustomAmount(e.target.value)}
-              className="w-20 px-3 py-2 border rounded"
-              placeholder="Enter amount"
-            />
-          </div>
-
-          <div className="flex space-x-4">
-            <button
-              onClick={handleAddToCart}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors flex-1"
-            >
-              Add to Cart
-            </button>
-            <button
-              onClick={handleBuyNow}
-              className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors flex-1"
-            >
-              Buy Now
-            </button>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold">Rate Us:</h3>
-            <div className="flex space-x-2">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <button
-                  key={star}
-                  onClick={() => setRating(star)}
-                  className={`text-2xl ${star <= rating ? 'text-yellow-500' : 'text-gray-300'}`}
-                >
-                  ★
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={handleRateUs}
-              className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors"
-            >
-              Submit Rating
-            </button>
-            {showRatingMessage && (
-              <p className="text-green-600">Thank you for rating us {rating} stars!</p>
-            )}
-          </div>
+          <button
+            onClick={handleAddToCart}
+            className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

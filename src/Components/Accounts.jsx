@@ -45,12 +45,6 @@ const Account = () => {
         ) : (
           <p className="text-gray-500">No user signed in.</p>
         )}
-        <button
-          onClick={() => navigate("/navbar")} // Back button to navigate to navbar
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
-        >
-          Back
-        </button>
       </div>
     </div>
   );

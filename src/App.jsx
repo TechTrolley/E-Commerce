@@ -10,43 +10,42 @@ import Laptops from './Components/Laptops';
 import Signup from './Components/signup';
 import WatchDetails from './Components/WatchDetails';
 import Account from "./Components/Accounts";
-import Cart from "./Components/Cart";
+import Hero from './pages/Hero';
+import Footer from './Components/Footer';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Invoice from './pages/invoice';
+import Cart from './pages/cart';
+import Orders from './pages/Orders';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Routes with navbar */}
-        <Route path="/" element={
-          <>
-            <Navbar />
-          </>
-        }/>
+    <div className="flex flex-col min-h-screen">
+      <Router>
+        <Navbar />
         
-        <Route path="/products" element={
-          
-          <>
-            <Navbar />
-            <Products />
-          </>
-        }/>
+        <main className="flex-grow pt-[80px]" >
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/smartphones" element={<SmartphonesList />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/smartwatches" element={<SmartWatches />} />
+            <Route path="/laptops" element={<Laptops />} />
+            <Route path="/watch/:id" element={<WatchDetails />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/invoice/:orderId" element={<Invoice />} />
+            <Route path="login" element={<Login/>} />
+            <Route path="register" element={<Register/>} />
+            <Route path="cart" element={<Cart/>} />
+          </Routes>
+        </main>
 
-        {/* Route without navbar */}
-        <Route path="/smartphones" element={<SmartphonesList />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/smartwatches" element={<SmartWatches />} />
-        <Route path="/laptops" element={<Laptops />} />
-        <Route path="/" element={<SmartWatches />} />
-        <Route path="/watch/:id" element={<WatchDetails />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/cart" element={<Cart />} />
-        
-
-        
-        <Route path="/signup" element={<Signup />} />        
-      </Routes>
-    </Router>
+        <Footer /> ✅ Footer stays at bottom
+      </Router>
+    </div>
   );
 }
-
 export default App;
