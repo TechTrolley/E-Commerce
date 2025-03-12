@@ -12,8 +12,6 @@ import speak from '../assets/iphone16promax.png';
 const ProductDetails = () => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
-  const [rating, setRating] = useState(0);
-  const [showRatingMessage, setShowRatingMessage] = useState(false);
 
   const products = [
     {
@@ -53,7 +51,7 @@ const ProductDetails = () => {
       name: 'Apple iPhone 14',
       description: 'Explore Amazing Drone Deals – Capture Stunning Views and Elevate Your Adventures.',
       image: Drones,
-      price: 'Rs.50,999',
+      price: '$199-$599',
       specs: ['6.1" Super Retina XDR Display', 'A15 Bionic Chip', 'Dual Camera (12MP + 12MP)', 'Crash Detection & Emergency SOS', '6GB RAM', '128GB/256GB Storage']
     },
     {
@@ -61,7 +59,7 @@ const ProductDetails = () => {
       name: 'Apple iPhone 15',
       description: 'Unbeatable Deals on Mice – Precision, Style, and Performance at Your Fingertips!',
       image: Mouse,
-      price: 'Rs.62,490',
+      price: '$199-$599',
       specs: ['6.1" Super Retina XDR Display', 'A16 Bionic Chip', 'Dynamic Island', 'Advanced Dual Camera System', '6GB RAM', '128GB/256GB/512GB Storage']
     },
     {
@@ -69,7 +67,7 @@ const ProductDetails = () => {
       name: 'Apple iPhone 16',
       description: 'Unleash Ultimate Performance with Our GPU Deals – Upgrade Today and Dominate Tomorrow!',
       image: Rtx,
-      price: 'Rs.69,999',
+      price: '$199-$599',
       specs: ['6.3" Super Retina XDR Display', 'A17 Bionic Chip', 'Triple Camera (48MP + 12MP + 12MP)', '5G Advanced Connectivity', '8GB RAM', '256GB/512GB Storage']
     },
     {
@@ -77,7 +75,7 @@ const ProductDetails = () => {
       name: 'Apple iPhone 16 Pro Max',
       description: 'Grab the Best Deals on Speakers – Crystal-Clear Sound for Every Moment.',
       image: speak,
-      price: 'Rs.1,75,900',
+      price: '$199-$599',
       specs: ['6.9" Super Retina XDR Display', 'A17 Pro Chip', 'Quad Camera (48MP + 12MP + 12MP + LiDAR)', 'ProMotion Technology', '12GB RAM', '256GB/512GB/1TB Storage']
     }
   ];
@@ -108,7 +106,11 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto p-6 pt-9">
+    <div className="max-w-screen-xl mx-auto p-6">
+      <Link to="/products" className="text-blue-500 mb-4 inline-block">
+        &larr; Back to Products
+      </Link>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <img
@@ -120,7 +122,7 @@ const ProductDetails = () => {
 
         <div className="space-y-6">
           <h1 className="text-4xl font-bold">{product.name}</h1>
-          <p className="text-4xl text-blue-600">{product.price}</p>
+          <p className="text-2xl text-blue-600">{product.price}</p>
           <p className="text-gray-600">{product.description}</p>
 
           <div className="space-y-4">
@@ -131,17 +133,6 @@ const ProductDetails = () => {
               ))}
             </ul>
           </div>
-          
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold">Rate Us:</h3>
-            <div className="flex space-x-2">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <button key={star} onClick={() => setRating(star)} className={`text-2xl ${star <= rating ? 'text-yellow-500' : 'text-gray-300'}`}>★</button>
-              ))}
-            </div>
-            <button onClick={() => setShowRatingMessage(true)} className="bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-green-600 transition-colors">Submit Rating</button>
-            {showRatingMessage && <p className="text-green-600">Thank you for rating us {rating} stars!</p>}
-          </div>
 
           <div className="flex items-center space-x-4">
             <label className="text-lg font-semibold">Quantity:</label>
@@ -149,7 +140,7 @@ const ProductDetails = () => {
               type="number"
               min="1"
               value={quantity}
-              onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
+              onChange={(e) => setQuantity(Math.max(1, e.target.value))}
               className="w-20 px-3 py-2 border rounded"
             />
           </div>

@@ -50,7 +50,7 @@ const Cart = () => {
                 </div>
                 <button
                   onClick={() => handleRemoveItem(item.id)}
-                  className="bg-red-500 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-red-700 transition"
+                  className="bg-[#252525] text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-blue-700 transition"
                 >
                   <FaTrash /> Remove
                 </button>

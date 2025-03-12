@@ -52,13 +52,13 @@ const Navbar = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="bg-[#CC313D] p-4 border-b-2 border-gray-200 fixed top-0 left-0 w-full z-[1000]">
+      <nav className="bg-[#287FF0] p-4 border-b-2 border-gray-200 fixed top-0 left-0 w-full z-[1000]">
         <div className="mx-auto flex flex-wrap justify-between items-center px-4 md:px-8">
           {/* Brand Logo */}
           <div className="text-white text-xl font-bold flex-shrink-0">Tech Trolley</div>
 
           {/* Search Bar */}
-          <div className="relative flex-grow max-w-[860px] mx-auto ml-28">
+          <div className="relative flex-grow max-w-[820px] mx-auto ml-28">
             <input
               type="text"
               placeholder="Search for products, brands, and more"
@@ -165,14 +165,14 @@ const Navbar = () => {
       </nav>
 
       {/* Category Navbar */}
-      <div id="products" className="bg-[#122F3D] text-white py-4 mt-[80px] fixed top-0 left-0 w-full z-[1000]">
+      <div id="products" className="bg-[#252525] text-white py-4 mt-[80px] fixed top-0 left-0 w-full z-[1000]">
         <div className="mx-auto flex flex-wrap justify-center gap-8 px-4 pr-48 font-semibold">
           {[
             'Smartphones',
             'Smartwatches',
             'Laptops',
             'Controllers',
-            'AirBuds',
+            'Drones',
             'Mice',
             'Keyboards',
             'Graphics Cards',
@@ -181,7 +181,7 @@ const Navbar = () => {
             <Link
               key={item}
               to={`/${item.toLowerCase()}`}
-              className="block hover:bg-[#CC313D] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
+              className="block hover:bg-[#287FF0] hover:text-white px-3 py-1 text-sm rounded transition-all duration-300"
             >
               {item}
             </Link>
