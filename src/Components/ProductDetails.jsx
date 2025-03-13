@@ -12,6 +12,10 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [user, setUser] = useState(null);
 
+  const formatPrice = (price) => {
+    return price.toLocaleString(); // Corrected from toLocalString to toLocaleString
+  };
+
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -112,7 +116,7 @@ const ProductDetails = () => {
 
         <div className="space-y-6">
           <h1 className="text-4xl font-bold">{product.name}</h1>
-          <p className="text-2xl text-blue-600">${product.price}</p>
+          <p className="text-2xl text-blue-600">₹{formatPrice(product.price)}</p>
           <p className="text-gray-600">{product.description}</p>
 
           <div className="flex items-center space-x-4">
@@ -125,12 +129,7 @@ const ProductDetails = () => {
               className="w-20 px-3 py-2 border rounded"
             />
           </div>
-
-          {/* 🔹 Ratings Section */}
-          <div className="text-lg font-semibold text-yellow-500">
-            Ratings: {renderStars(product.rating)}
-          </div>
-
+          
           <div className="flex space-x-4">
             {/* Add to Cart Button */}
             <button

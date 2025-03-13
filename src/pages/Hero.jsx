@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-import Image from "../assets/Logo2(1).png"
+import Image from "../assets/art2.png"
 import BackgroundImage from "../assets/Background.jpg"
 const Hero = () => {
   return (

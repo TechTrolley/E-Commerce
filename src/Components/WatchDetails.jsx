@@ -12,6 +12,10 @@ const WatchDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [user, setUser] = useState(null);
 
+  const formatPrice = (price) => {
+    return price.toLocaleString(); // Corrected from toLocalString to toLocaleString
+  };
+
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -111,7 +115,7 @@ const WatchDetails = () => {
 
         <div className="space-y-6">
           <h1 className="text-4xl font-bold">{watch.name}</h1>
-          <p className="text-2xl text-blue-600">${watch.price}</p>
+          <p className="text-2xl text-blue-600">₹{formatPrice(watch.price)}</p>
           <p className="text-gray-600">{watch.description}</p>
 
           <div className="flex items-center space-x-4">

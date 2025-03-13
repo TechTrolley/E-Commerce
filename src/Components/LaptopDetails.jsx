@@ -101,7 +101,7 @@ const LaptopDetails = () => {
         </div>
         <div className="space-y-6">
           <h1 className="text-4xl font-bold">{laptop.name}</h1>
-          <p className="text-4xl text-blue-600">{laptop.price}</p>
+          <p className="text-2xl text-blue-600">₹{formatPrice(laptop.price)}</p>
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Key Features:</h3>
             <ul className="list-disc pl-6 space-y-2">
