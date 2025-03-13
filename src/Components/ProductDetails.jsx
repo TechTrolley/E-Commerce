@@ -44,7 +44,7 @@ const ProductDetails = () => {
   const handleAddToCart = () => {
     if (!user) {
       alert("Please log in to add items to your cart.");
-      navigate("/login"); // Redirect to login page
+      navigate("/login");
       return;
     }
 
@@ -66,7 +66,36 @@ const ProductDetails = () => {
 
     localStorage.setItem("cart", JSON.stringify(cartItems));
     alert("Added to cart successfully!");
-    navigate("/cart"); // ✅ Redirect to cart page
+    navigate("/cart");
+  };
+
+  // 🔹 Handle "Buy Now" action
+  const handleBuyNow = () => {
+    if (!user) {
+      alert("Please log in to buy this product.");
+      navigate("/login");
+      return;
+    }
+
+    navigate("/checkout", { 
+      state: { 
+        product: { 
+          id: product.id, 
+          name: product.name, 
+          price: product.price, 
+          imageUrl: product.imageUrl, 
+          quantity: quantity 
+        } 
+      } 
+    });
+  };
+
+  // 🔹 Function to render star ratings
+  const renderStars = (rating) => {
+    if (rating === undefined || rating === null) return "No Ratings Yet";
+    const fullStars = Math.floor(rating);
+    const emptyStars = 5 - fullStars;
+    return "★".repeat(fullStars) + "☆".repeat(emptyStars) + ` (${rating}/5)`;
   };
 
   if (loading) return <div className="text-center mt-8">Loading product details...</div>;
@@ -97,13 +126,28 @@ const ProductDetails = () => {
             />
           </div>
 
-          {/* Add to Cart Button */}
-          <button
-            onClick={handleAddToCart}
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Add to Cart
-          </button>
+          {/* 🔹 Ratings Section */}
+          <div className="text-lg font-semibold text-yellow-500">
+            Ratings: {renderStars(product.rating)}
+          </div>
+
+          <div className="flex space-x-4">
+            {/* Add to Cart Button */}
+            <button
+              onClick={handleAddToCart}
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Add to Cart
+            </button>
+
+            {/* Buy Now Button */}
+            <button
+              onClick={handleBuyNow}
+              className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
+            >
+              Buy Now
+            </button>
+          </div>
         </div>
       </div>
     </div>
